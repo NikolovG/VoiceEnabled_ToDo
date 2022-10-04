@@ -6,9 +6,18 @@ import pyaudio
 import argparse
 import uuid
 
+# import main # other file
+import time
+
+
 from google.cloud.dialogflowcx_v3beta1.services.agents import AgentsClient
 from google.cloud.dialogflowcx_v3beta1.services.sessions import SessionsClient
 from google.cloud.dialogflowcx_v3beta1.types import session
+
+s_time = time.time()
+
+
+
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'name.json'
 
@@ -22,7 +31,15 @@ def run_sample():
     agent = f"projects/{project_id}/locations/{location_id}/agents/{agent_id}"
     # For more information on sessions see https://cloud.google.com/dialogflow/cx/docs/concept/session
     session_id ="me"
+
+
+    # enter speech here
+
+
     texts = ["Hello"]
+
+
+
     # For more supported languages see https://cloud.google.com/dialogflow/es/docs/reference/language
     language_code = "en"
 
@@ -63,3 +80,6 @@ def detect_intent_texts(agent, session_id, texts, language_code):
 
 if __name__ == "__main__":
     run_sample()
+
+p_time = time.time() - s_time
+print("TIME ELAPSED : "+ str(p_time))
