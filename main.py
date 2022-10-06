@@ -25,18 +25,19 @@ print(type(audio))
 
 #parsed = transcribe.split() # splits the string into a list of words
 
-print("\n")
+def fun():
+    print("\n")
 
-with myMic as source:
-    print("Say something!")
-    audio = r.listen(source)
+    with myMic as source:
+        print("Say something!")
+        audio = r.listen(source)
 
-voiceOutput = r.recognize_google(audio)
-print(voiceOutput.split())
+    voiceOutput = r.recognize_google(audio)
+    print(voiceOutput.split())
 
-for i in voiceOutput.split():
-    print(i)
-
+    for i in voiceOutput.split():
+        print(i)
+    return voiceOutput
 
 # How will it handle punctuation???
 # NOTE: does not react to questions

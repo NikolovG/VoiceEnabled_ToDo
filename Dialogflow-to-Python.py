@@ -1,6 +1,7 @@
 import os
 from google.cloud import dialogflow_v2beta1 as dialogflow
 from google.api_core.exceptions import InvalidArgument
+from matplotlib.pyplot import text
 import speech_recognition as sr
 import pyaudio
 import argparse
@@ -8,6 +9,7 @@ import uuid
 
 # import main # other file
 import time
+import main
 
 
 from google.cloud.dialogflowcx_v3beta1.services.agents import AgentsClient
@@ -34,16 +36,21 @@ def run_sample():
 
 
     # enter speech here
+    print("PREPARE FOR WORDS")
 
+    #texts = ["Hello"]
 
-    texts = ["Hello"]
+    textList = []
+    while True:
+        word = main.fun()
+        textList.append(word)
 
+        texts = textList
 
+        # For more supported languages see https://cloud.google.com/dialogflow/es/docs/reference/language
+        language_code = "en"
 
-    # For more supported languages see https://cloud.google.com/dialogflow/es/docs/reference/language
-    language_code = "en"
-
-    detect_intent_texts(agent, session_id, texts, language_code)
+        detect_intent_texts(agent, session_id, texts, language_code)
 
 
 def detect_intent_texts(agent, session_id, texts, language_code):
